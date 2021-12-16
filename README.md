@@ -1,0 +1,2 @@
+# energy_management_app_backend
+This is a energy-related software application which may provide utility bill tracking, real-time metering, building HVAC and lighting control systems, building simulation and modeling, carbon and sustainability reporting, IT equipment management, demand response, and/or energy audits. The app provides tools for reducing energy costs and consumption for buildings, communities or industries. EMS collects energy data and uses it for three main purposes: Reporting, Monitoring and Engagement.
