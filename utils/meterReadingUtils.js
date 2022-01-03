@@ -1,5 +1,21 @@
 const MeterReading = require('../models/meterReadings')
 
+const getMeterReadings = async () => {
+    try {
+        let meterReadings = await MeterReading.find()
+        return {
+            statusCode: 200,
+            meterReadings: meterReadings
+        }
+    } catch (e) {
+        console.log(e)
+        return {
+            statusCode: 500,
+            message: 'internal server error.'
+        }
+    }
+}
+
 const addMeterReading = async ( reading, date, companyId ) => {
     
         const meterReading = new MeterReading({
@@ -23,4 +39,5 @@ const addMeterReading = async ( reading, date, companyId ) => {
     }
 }
 
+module.exports.getMeterReadings = getMeterReadings
 module.exports.addMeterReading = addMeterReading

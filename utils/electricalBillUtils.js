@@ -1,5 +1,21 @@
 const ElectricalBill = require('../models/electricalBills')
 
+const getElectricalBills = async () => {
+    try {
+        let electricalBills = await ElectricalBill.find()
+        return {
+            statusCode: 200,
+            electricalBills: electricalBills
+        }
+    } catch (e) {
+        console.log(e)
+        return {
+            statusCode: 500,
+            message: 'internal server error.'
+        }
+    }
+}
+
 const addElectricalBill = async ( bill, date, companyId ) => {
     
         const electricalBill = new ElectricalBill({
@@ -23,4 +39,5 @@ const addElectricalBill = async ( bill, date, companyId ) => {
     }
 }
 
+module.exports.getElectricalBills = getElectricalBills
 module.exports.addElectricalBill = addElectricalBill
