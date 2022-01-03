@@ -13,7 +13,7 @@ const meterReadingRoute = require('./routes/meterReadingRoute')
 const app = express()
 
 app.use(cors({
-    origin: "*",
+    origin: "https://energy-management-app-backend.herokuapp.com, http://localhost:3000, http://localhost:5000",
     credentials: true
 }))
 app.use(express.json())
