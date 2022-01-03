@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Energy management software api",
   "main": "app.js",
-  "engines": {
-    "node": "14.18.0"
-  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
