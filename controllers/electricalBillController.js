@@ -10,7 +10,7 @@ exports.addElectricalBill = async (req, res) => {
     await addElectricalBillValidation.validateAsync(req.body)
     
     // let companyId = req.user._id
-    companyId = 1
+    companyId = '61b21461c6b68fc6a2fbde19'
 
     const {
         electricalBill,
