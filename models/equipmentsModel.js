@@ -7,16 +7,14 @@ const equipmentSchema = mongoose.Schema({
     type: {
         type: String
     },
-    description: {
-        typr: String
-    },
-    category: {
-        type: String
-    },
     companyId: {
-        type: String
+        type: mongoose.Types.ObjectId,
+        ref: 'users'
     },
     watts: {
+        type: Number
+    },
+    number: {
         type: Number
     },
     status: {

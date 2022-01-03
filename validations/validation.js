@@ -1,7 +1,34 @@
 // Data validation
 const Joi = require('@hapi/joi')
 
+const addMeterReadingValidation = Joi.object({
+    date: Joi.date()
+        .required(),
+    meterReading: Joi.number()
+        .required()
+})
 
+const addElectricalBillValidation = Joi.object({
+    date: Joi.date()
+        .required(),
+    electricalBill: Joi.number()
+        .required()
+})
+
+const addEquipmentValidation = Joi.object({
+    name: Joi.string()
+        .min(2)
+        .max(50)
+        .required(),
+    type: Joi.string()
+        .min(2)
+        .max(50)
+        .required(),
+    watts: Joi.number()
+        .required(),
+    number: Joi.number()
+        .required()
+})
 
 const registerValidation = Joi.object({
     email: Joi.string()
@@ -13,10 +40,10 @@ const registerValidation = Joi.object({
         .required()
         .min(2)
         .max(50),
-    phone: Joi.string()
-        .min(13)
-        .max(13)
-        .required(),
+    location: Joi.string()
+        .required()
+        .min(2)
+        .max(50),
     password: Joi.string()
         .required()
         .min(6)
@@ -35,5 +62,8 @@ const loginValidation = Joi.object({
 
 module.exports = {
     registerValidation,
-    loginValidation
+    loginValidation,
+    addEquipmentValidation,
+    addElectricalBillValidation,
+    addMeterReadingValidation 
 }

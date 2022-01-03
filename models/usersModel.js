@@ -5,19 +5,14 @@ const userSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    phone: {
-        type: String,
-        unique: true
-    },
     companyName: {
+        type: String
+    },
+    location: {
         type: String
     },
     password: {
         type: String
-    },
-    phoneVerified: {
-        type: Boolean,
-        default: false
     },
     emailVerified: {
         type: Boolean,

@@ -6,6 +6,9 @@ const deserializeUser = require("./middleware/deserializeUser")
 const cors = require('cors')
 
 const authRoute = require('./routes/authRoute')
+const equipmentRoute = require('./routes/equipmentRoute')
+const electricalBillsRoute = require('./routes/electricalBillsRoute')
+const meterReadingRoute = require('./routes/meterReadingRoute')
 
 const app = express()
 
@@ -19,13 +22,14 @@ app.use(deserializeUser)
 app.use(express.urlencoded({
     extended: false
 }));
-app.use('/users', authRoute)
-
-app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('Welcome to group 4 Energy Management App')
 })
+app.use('/users', authRoute)
+app.use('/equipments', equipmentRoute)
+app.use('/electricalBills', electricalBillsRoute)
+app.use('/meterReadings', meterReadingRoute)
 
 // connect to Db
 mongoose.connect(process.env.DB_CONNECTION, (err) => {
