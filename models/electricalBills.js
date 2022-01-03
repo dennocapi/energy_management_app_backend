@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const electricalBillsSchema = mongoose.Schema({
-    electricalBill: {
+    amount: {
         type: Number
     },
     date: {

@@ -11,7 +11,7 @@ const addMeterReadingValidation = Joi.object({
 const addElectricalBillValidation = Joi.object({
     date: Joi.date()
         .required(),
-    electricalBill: Joi.number()
+    amount: Joi.number()
         .required()
 })
 

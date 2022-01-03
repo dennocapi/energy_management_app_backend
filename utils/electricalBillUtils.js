@@ -16,11 +16,11 @@ const getElectricalBills = async () => {
     }
 }
 
-const addElectricalBill = async ( bill, date, companyId ) => {
+const addElectricalBill = async ( amount, date, companyId ) => {
     
         const electricalBill = new ElectricalBill({
             date: date,
-            electricalBill: bill,
+            amount: amount,
             companyId: companyId
         })
     try {

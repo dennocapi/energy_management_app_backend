@@ -36,12 +36,12 @@ exports.addElectricalBill = async (req, res) => {
     companyId = '61b21461c6b68fc6a2fbde19'
 
     const {
-        electricalBill,
+        amount,
         date
     } = req.body
 
     try {
-        const response = await addElectricalBill(electricalBill, date, companyId)
+        const response = await addElectricalBill(amount, date, companyId)
 
         return res.status(200).json({
             message: response.message
