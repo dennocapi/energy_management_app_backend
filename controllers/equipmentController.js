@@ -31,7 +31,8 @@ exports.addEquipment = async (req, res) => {
 
     await addEquipmentValidation.validateAsync(req.body)
 
-    let companyId = req.user._id
+    // let companyId = req.user._id
+    let companyId = 1
 
     const {
         name,

@@ -9,7 +9,8 @@ exports.addElectricalBill = async (req, res) => {
 
     await addElectricalBillValidation.validateAsync(req.body)
     
-    let companyId = req.user._id
+    // let companyId = req.user._id
+    companyId = 1
 
     const {
         electricalBill,
