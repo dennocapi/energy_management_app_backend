@@ -1,8 +1,8 @@
 const Equipment = require('../models/equipmentsModel')
 
-const getEquipments = async () => {
+const getEquipments = async (companyId) => {
     try {
-        let equipments = await Equipment.find()
+        let equipments = await Equipment.find({cpmanyId: companyId})
         return {
             statusCode: 200,
             equipments: equipments

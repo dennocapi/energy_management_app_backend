@@ -7,8 +7,9 @@ const {
 } = require('../validations/validation')
 
 exports.getElectricalBills = async (req, res) => {
+    let companyId = req.user._id
     try {
-        const response = await getElectricalBills()
+        const response = await getElectricalBills(companyId)
         if (response.electricalBills.length > 0) {
             return res.status(200).json({
                 electricalBills: response.electricalBills

@@ -6,8 +6,9 @@ const {
 } = require('../validations/validation')
 
 exports.getMeterReadings = async (req, res) => {
+    let companyId = req.user._id
     try {
-        const response = await getMeterReadings()
+        const response = await getMeterReadings(companyId)
         if (response.meterReadings.length > 0) {
             return res.status(200).json({
                 meterReadings: response.meterReadings

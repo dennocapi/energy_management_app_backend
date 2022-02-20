@@ -7,8 +7,9 @@ const {
 } = require('../validations/validation')
 
 exports.getEquipments = async (req, res) => {
+    let companyId = req.user._id
     try {
-        const response = await getEquipments()
+        const response = await getEquipments(companyId)
         if (response.equipments.length > 0) {
             return res.status(200).json({
                 equipments: response.equipments

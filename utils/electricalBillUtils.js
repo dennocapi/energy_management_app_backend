@@ -1,8 +1,8 @@
 const ElectricalBill = require('../models/electricalBills')
 
-const getElectricalBills = async () => {
+const getElectricalBills = async (companyId) => {
     try {
-        let electricalBills = await ElectricalBill.find()
+        let electricalBills = await ElectricalBill.find({companyId: companyId})
         return {
             statusCode: 200,
             electricalBills: electricalBills

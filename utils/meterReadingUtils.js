@@ -1,8 +1,8 @@
 const MeterReading = require('../models/meterReadings')
 
-const getMeterReadings = async () => {
+const getMeterReadings = async (companyId) => {
     try {
-        let meterReadings = await MeterReading.find()
+        let meterReadings = await MeterReading.find({companyId: companyId})
         return {
             statusCode: 200,
             meterReadings: meterReadings
