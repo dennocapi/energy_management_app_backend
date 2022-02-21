@@ -4,7 +4,7 @@ const { requireUser } = require("../middleware/requireUser")
 
 const equipmentController = require('../controllers/equipmentController')
 
-router.post('/add',  equipmentController.addEquipment)
-router.post('/getEquipments', equipmentController.getEquipments)
+router.post('/add', requireUser,  equipmentController.addEquipment)
+router.post('/getEquipments', requireUser, equipmentController.getEquipments)
 
 module.exports = router

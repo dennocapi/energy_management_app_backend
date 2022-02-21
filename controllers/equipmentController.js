@@ -7,6 +7,7 @@ const {
 } = require('../validations/validation')
 
 exports.getEquipments = async (req, res) => {
+    console.log('User-----------',req.user)
     let companyId = req.user._id
     try {
         const response = await getEquipments(companyId)

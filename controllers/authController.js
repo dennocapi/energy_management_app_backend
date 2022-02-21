@@ -170,7 +170,9 @@ exports.login = async (req, res) => {
             secure: process.env.NODE_ENV !== 'development'
         })
 
+        console.log('session',session)
         return res.status(200).send(session)
+        
     } catch (err) {
         console.log(err.toString())
         if (err.isJoi === true) {
