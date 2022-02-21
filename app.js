@@ -9,6 +9,7 @@ const authRoute = require('./routes/authRoute')
 const equipmentRoute = require('./routes/equipmentRoute')
 const electricalBillsRoute = require('./routes/electricalBillsRoute')
 const meterReadingRoute = require('./routes/meterReadingRoute')
+const { requireUser } = require("./middleware/requireUser")
 
 const app = express()
 
@@ -23,7 +24,7 @@ app.use(express.urlencoded({
     extended: false
 }));
 
-app.get('/', (req, res) => {
+app.get('/', requireUser, (req, res) => {
     res.send('Welcome to group 4 Energy Management App')
 })
 app.use('/users', authRoute)
