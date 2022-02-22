@@ -2,7 +2,7 @@ const Equipment = require('../models/equipmentsModel')
 
 const getEquipments = async (companyId) => {
     try {
-        let equipments = await Equipment.find({cpmanyId: companyId})
+        let equipments = await Equipment.find({companyId: companyId})
         return {
             statusCode: 200,
             equipments: equipments

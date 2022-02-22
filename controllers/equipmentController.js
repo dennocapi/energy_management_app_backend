@@ -7,7 +7,6 @@ const {
 } = require('../validations/validation')
 
 exports.getEquipments = async (req, res) => {
-    console.log('User-----------',req.user)
     let companyId = req.user._id
     try {
         const response = await getEquipments(companyId)
@@ -32,7 +31,7 @@ exports.getEquipments = async (req, res) => {
 exports.addEquipment = async (req, res) => {
 
     await addEquipmentValidation.validateAsync(req.body)
-    
+
     let companyId = req.user._id
 
     const {

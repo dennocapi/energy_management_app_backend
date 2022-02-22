@@ -18,7 +18,7 @@ const getElectricalBills = async (companyId) => {
 }
 
 const addElectricalBill = async ( amount, date, companyId ) => {
-        console.log(companyId)
+        
         const electricalBill = new ElectricalBill({
             date: date,
             amount: amount,
