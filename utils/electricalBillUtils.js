@@ -3,6 +3,7 @@ const ElectricalBill = require('../models/electricalBills')
 const getElectricalBills = async (companyId) => {
     try {
         let electricalBills = await ElectricalBill.find({companyId: companyId})
+        console.log('Response', electricalBills)
         return {
             statusCode: 200,
             electricalBills: electricalBills
@@ -17,7 +18,7 @@ const getElectricalBills = async (companyId) => {
 }
 
 const addElectricalBill = async ( amount, date, companyId ) => {
-    
+        console.log(companyId)
         const electricalBill = new ElectricalBill({
             date: date,
             amount: amount,

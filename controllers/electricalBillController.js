@@ -8,6 +8,7 @@ const {
 
 exports.getElectricalBills = async (req, res) => {
     let companyId = req.user._id
+    
     try {
         const response = await getElectricalBills(companyId)
         if (response.electricalBills.length > 0) {
@@ -33,8 +34,7 @@ exports.addElectricalBill = async (req, res) => {
 
     await addElectricalBillValidation.validateAsync(req.body)
     
-    // let companyId = req.user._id
-    companyId = '61b21461c6b68fc6a2fbde19'
+    let companyId = req.user._id
 
     const {
         amount,

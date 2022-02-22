@@ -31,8 +31,7 @@ exports.addMeterReading = async (req, res) => {
 
     await addMeterReadingValidation.validateAsync(req.body)
     
-    // let companyId = req.user._id
-    let companyId = '61b21461c6b68fc6a2fbde19'
+    let companyId = req.user._id
 
     const {
         meterReading,
