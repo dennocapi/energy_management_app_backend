@@ -6,5 +6,7 @@ const electricalBillController = require('../controllers/electricalBillControlle
 
 router.post('/add', requireUser, electricalBillController.addElectricalBill)
 router.post('/getElectricalBills', requireUser, electricalBillController.getElectricalBills)
+router.patch('/updateElectricalBill/:electricalBillId', requireUser, electricalBillController.editElectricalBill)
+router.delete('/deleteElectricalBill/:electricalBillId', requireUser, electricalBillController.deleteElectricalBill)
 
 module.exports = router

@@ -1,6 +1,8 @@
 const {
     addElectricalBill,
-    getElectricalBills
+    getElectricalBills,
+    updateElectricalBill,
+    deleteElectricalBill,
 } = require('../utils/electricalBillUtils')
 const {
     addElectricalBillValidation
@@ -53,5 +55,53 @@ exports.addElectricalBill = async (req, res) => {
         return res.status(500).json({
             message: response.message
         })
+    }
+}
+
+exports.editElectricalBill = async (req, res) => {
+    let companyId = req.user._id
+    let electricalBillId = req.params.electricalBillId
+    let fields = req.body
+
+    try {
+        let updatedElectricalBill = await updateElectricalBill(companyId, electricalBillId, fields)
+        if (updatedElectricalBill.statusCode === 200) {
+            return res.status(200).json({
+                message: 'Electrical bill updated successfully.',
+                updatedElectricalBill: updatedElectricalBill
+            })
+        }
+        return res.status(500).json({
+            message: 'Internal server error.'
+        })
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json({
+            message: 'Something went wrong.'
+        })
+    }
+}
+
+exports.deleteElectricalBill = async (req, res) => {
+    let companyId = req.user._id
+    let electricalBillId = req.params.electricalBillId
+
+    try {
+        let deletedElectricalBill = await deleteElectricalBill(companyId, electricalBillId)
+        if (deletedElectricalBill.statusCode === 200) {
+            return res.status(200).json({
+                message: 'Electrical bill deleted successfully.',
+                deletedElectricalBill: deletedElectricalBill
+            })
+        }
+        return res.status(500).json({
+            message: 'Internal server error.'
+        })
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json({
+            message: 'Something went wrong.'
+        })
+        
     }
 }

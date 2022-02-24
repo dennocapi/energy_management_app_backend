@@ -1,5 +1,8 @@
 const {
-    addMeterReading, getMeterReadings
+    addMeterReading,
+    getMeterReadings,
+    updateMeterReading,
+    deleteMeterReading
 } = require('../utils/meterReadingUtils')
 const {
     addMeterReadingValidation
@@ -30,7 +33,7 @@ exports.getMeterReadings = async (req, res) => {
 exports.addMeterReading = async (req, res) => {
 
     await addMeterReadingValidation.validateAsync(req.body)
-    
+
     let companyId = req.user._id
 
     const {
@@ -50,5 +53,53 @@ exports.addMeterReading = async (req, res) => {
         return res.status(500).json({
             message: response.message
         })
+    }
+}
+
+exports.editMeterReading = async (req, res) => {
+    let companyId = req.user._id
+    let meterReadingId = req.params.meterReadingId
+    let fields = req.body
+
+    try {
+        let updatedMeterReading = await updateMeterReading(companyId, meterReadingId, fields)
+        if (updatedMeterReading.statusCode === 200) {
+            return res.status(200).json({
+                message: 'Meter reading updated successfully.',
+                updatedMeterReading: updatedMeterReading
+            })
+        }
+        return res.status(500).json({
+            message: 'Internal server error.'
+        })
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json({
+            message: 'Something went wrong.'
+        })
+    }
+}
+
+exports.deleteMeterReading = async (req, res) => {
+    let companyId = req.user._id
+    let meterReadingId = req.params.meterReadingId
+
+    try {
+        let deletedMeterReading = await deleteMeterReading(companyId, meterReadingId)
+        if (deletedMeterReading.statusCode === 200) {
+            return res.status(200).json({
+                message: 'Electrical bill deleted successfully.',
+                deletedMeterReading: deletedMeterReading
+            })
+        }
+        return res.status(500).json({
+            message: 'Internal server error.'
+        })
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json({
+            message: 'Something went wrong.'
+        })
+        
     }
 }

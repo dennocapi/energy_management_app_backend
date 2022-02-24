@@ -6,5 +6,7 @@ const equipmentController = require('../controllers/equipmentController')
 
 router.post('/add', requireUser,  equipmentController.addEquipment)
 router.post('/getEquipments', requireUser, equipmentController.getEquipments)
+router.patch('/updateEquipment/:equipmentId', requireUser, equipmentController.editEquipment)
+router.delete('/deleteEquipment/:equipmentId', requireUser, equipmentController.deleteEquipment)
 
 module.exports = router

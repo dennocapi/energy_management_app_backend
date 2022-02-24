@@ -2,7 +2,9 @@ const MeterReading = require('../models/meterReadings')
 
 const getMeterReadings = async (companyId) => {
     try {
-        let meterReadings = await MeterReading.find({companyId: companyId})
+        let meterReadings = await MeterReading.find({
+            companyId: companyId
+        })
         return {
             statusCode: 200,
             meterReadings: meterReadings
@@ -16,13 +18,13 @@ const getMeterReadings = async (companyId) => {
     }
 }
 
-const addMeterReading = async ( reading, date, companyId ) => {
-    
-        const meterReading = new MeterReading({
-            meterReading: reading,
-            date: date,
-            companyId: companyId
-        })
+const addMeterReading = async (reading, date, companyId) => {
+
+    const meterReading = new MeterReading({
+        meterReading: reading,
+        date: date,
+        companyId: companyId
+    })
     try {
         await meterReading.save()
         return {
@@ -39,5 +41,45 @@ const addMeterReading = async ( reading, date, companyId ) => {
     }
 }
 
-module.exports.getMeterReadings = getMeterReadings
-module.exports.addMeterReading = addMeterReading
+const updateMeterReading = async (companyId, meterReadingId, fields) => {
+
+    try {
+        let updatedMeterReading = await MeterReading.updateOne({
+            _id: meterReadingId,
+            companyId: companyId
+        }, fields)
+        console.log(updatedMeterReading)
+        return {
+            statusCode: 200,
+            updatedElectricalBill: updatedMeterReading
+        }
+    } catch (e) {
+        console.log(e)
+        return {
+            statusCode: 500,
+            message: 'Internal server error.'
+        }
+    }
+}
+
+const deleteMeterReading = async (companyId, meterReadingId) => {
+    try {
+        deletedMeterReading = await MeterReading.deleteOne({
+            _id: meterReadingId,
+            companyId: companyId
+        })
+        console.log(deletedMeterReading)
+        return {
+            statusCode: 200,
+            deletedMeterReading: deletedMeterReading
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+module.exports = {
+    getMeterReadings,
+    addMeterReading,
+    updateMeterReading,
+    deleteMeterReading
+}

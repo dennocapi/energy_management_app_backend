@@ -2,7 +2,9 @@ const Equipment = require('../models/equipmentsModel')
 
 const getEquipments = async (companyId) => {
     try {
-        let equipments = await Equipment.find({companyId: companyId})
+        let equipments = await Equipment.find({
+            companyId: companyId
+        })
         return {
             statusCode: 200,
             equipments: equipments
@@ -29,18 +31,58 @@ const addEquipment = async (name, type, watts, number, companyId) => {
         await equipment.save()
         return {
             statusCode: 200,
-            message: 'Equipment added successfully'
+            equipment: equipment
         }
     } catch (e) {
         console.log(e)
 
         return {
             statusCode: 500,
-            message: 'Internal server error. Equipment not added.'
+            message: 'Internal server error.'
         }
     }
 }
 
+const updateEquipment = async (companyId, equipmentId, fields) => {
 
-module.exports.addEquipment = addEquipment
-module.exports.getEquipments = getEquipments
+    try {
+        let updatedEquipment = await Equipment.updateOne({
+            _id: equipmentId,
+            companyId: companyId
+        }, fields)
+        console.log(updatedEquipment)
+        return {
+            statusCode : 200,
+            equipment: updatedEquipment
+        }
+    } catch (e) {
+        console.log(e)
+        return {
+            statusCode: 500,
+            message: 'Internal server error.'
+        }
+    }
+}
+
+const deleteEquipment = async (companyId, equipmentId) => {
+    try {
+        deletedEquipment = await Equipment.deleteOne({
+            _id: equipmentId,
+            companyId: companyId
+        })
+        console.log(deletedEquipment)
+        return {
+            statusCode : 200,
+            deletedEquipment: deletedEquipment
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+module.exports = {
+    addEquipment,
+    getEquipments,
+    updateEquipment,
+    deleteEquipment
+}
