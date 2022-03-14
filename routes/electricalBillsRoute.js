@@ -4,6 +4,7 @@ const { requireUser } = require("../middleware/requireUser")
 
 const electricalBillController = require('../controllers/electricalBillController')
 
+// routes
 router.post('/add', requireUser, electricalBillController.addElectricalBill)
 router.post('/getElectricalBills', requireUser, electricalBillController.getElectricalBills)
 router.patch('/updateElectricalBill/:electricalBillId', requireUser, electricalBillController.editElectricalBill)
