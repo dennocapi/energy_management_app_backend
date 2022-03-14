@@ -17,11 +17,9 @@ const addElectricalBillValidation = Joi.object({
 
 const addEquipmentValidation = Joi.object({
     name: Joi.string()
-        .min(2)
         .max(50)
         .required(),
     type: Joi.string()
-        .min(2)
         .max(50)
         .required(),
     watts: Joi.number()
