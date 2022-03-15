@@ -4,6 +4,7 @@ const {
     updateEquipment,
     deleteEquipment
 } = require('../utils/equipmentUtils')
+let Equipment = require('../models/equipmentsModel')
 const {
     addEquipmentValidation
 } = require('../validations/validation')
@@ -102,6 +103,30 @@ exports.deleteEquipment = async (req, res) => {
         return res.status(500).json({
             message: 'Something went wrong.'
         })
-        
+
     }
+}
+exports.getEquipment = async (req, res) => {
+    let {
+        equipmentId
+    } = req.body
+    try{
+    let equipment = await Equipment.findOne({
+        equipmentId
+    })
+    if (equipment) {
+        return res.status(200).json({
+            equipment: equipment
+        })
+    }
+    return res.status(404).json({
+        message: 'Equipment not found.'
+    })
+} catch(err){
+    console.log(err)
+    return res.status(500).json({
+        message: 'Something went wrong.'
+    })
+
+}
 }
