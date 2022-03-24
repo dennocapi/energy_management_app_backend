@@ -18,7 +18,7 @@ const equipmentSchema = mongoose.Schema({
         type: Number
     },
     usage:{
-
+        type: Number
     },
     status: {
         type: Boolean,
