@@ -64,6 +64,8 @@ exports.editEquipment = async (req, res) => {
     let equipmentId = req.params.equipmentId
     let fields = req.body
 
+    console.log('Fields---------------', fields)
+
     try {
         let updatedEquipment = await updateEquipment(companyId, equipmentId, fields)
         if (updatedEquipment.statusCode === 200) {
