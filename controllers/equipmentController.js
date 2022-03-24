@@ -41,11 +41,12 @@ exports.addEquipment = async (req, res) => {
         name,
         type,
         watts,
-        number
+        number,
+        usage
     } = req.body
 
     try {
-        const equipment = await addEquipment(name, type, watts, number, companyId)
+        const equipment = await addEquipment(name, type, watts, number, usage, companyId)
 
         return res.status(200).json({
             message: equipment
@@ -63,8 +64,6 @@ exports.editEquipment = async (req, res) => {
     let companyId = req.user._id
     let equipmentId = req.params.equipmentId
     let fields = req.body
-
-    console.log('Fields---------------', fields)
 
     try {
         let updatedEquipment = await updateEquipment(companyId, equipmentId, fields)

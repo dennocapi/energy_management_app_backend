@@ -18,13 +18,14 @@ const getEquipments = async (companyId) => {
     }
 }
 
-const addEquipment = async (name, type, watts, number, companyId) => {
+const addEquipment = async (name, type, watts, number, usage, companyId) => {
 
     const equipment = new Equipment({
         name: name,
         type: type,
         watts: watts,
         number: number,
+        usage: usage,
         companyId: companyId
     })
     try {
