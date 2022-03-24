@@ -4,7 +4,7 @@ const {
     updateEquipment,
     deleteEquipment
 } = require('../utils/equipmentUtils')
-let Equipment = require('../models/equipmentsModel')
+let Equipment = require('../models/equipmentModel')
 const {
     addEquipmentValidation
 } = require('../validations/validation')

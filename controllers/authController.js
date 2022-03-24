@@ -127,6 +127,7 @@ exports.login = async (req, res) => {
         if (!validPass) return res.status(400).json({
             message: 'Wrong email or password.'
         })
+        
         const {
             location,
             emailVerified,

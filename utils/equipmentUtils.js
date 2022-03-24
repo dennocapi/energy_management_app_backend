@@ -1,4 +1,4 @@
-const Equipment = require('../models/equipmentsModel')
+const Equipment = require('../models/equipmentModel')
 
 const getEquipments = async (companyId) => {
     try {
