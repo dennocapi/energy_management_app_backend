@@ -25,6 +25,8 @@ const addEquipmentValidation = Joi.object({
     watts: Joi.number()
         .required(),
     number: Joi.number()
+        .required(),
+    usage: Joi.number()
         .required()
 })
 
@@ -63,5 +65,5 @@ module.exports = {
     loginValidation,
     addEquipmentValidation,
     addElectricalBillValidation,
-    addMeterReadingValidation 
+    addMeterReadingValidation
 }
