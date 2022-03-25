@@ -4,7 +4,7 @@ const getElectricalBills = async (companyId) => {
     try {
         let electricalBills = await ElectricalBill.find({
             companyId: companyId
-        }).sort('date', 1)
+        }).sort('date')
         console.log('Response', electricalBills)
         return {
             statusCode: 200,
