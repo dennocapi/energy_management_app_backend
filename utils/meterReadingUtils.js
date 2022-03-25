@@ -4,7 +4,7 @@ const getMeterReadings = async (companyId) => {
     try {
         let meterReadings = await MeterReading.find({
             companyId: companyId
-        })
+        }).sort('date', 1)
         return {
             statusCode: 200,
             meterReadings: meterReadings
