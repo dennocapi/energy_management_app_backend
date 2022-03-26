@@ -17,9 +17,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()
   })
-// ["https://energy-management-app-backend.herokuapp.com", "https://energy-management-software.herokuapp.com", "http://localhost:3000", "http://localhost:5000","https://nervous-goldwasser-ea1a45.netlify.app", "https://goofy-jang-79f2b5.netlify.app"]
 app.use(cors({
-    origin: '*',
+    origin:  ["https://energy-management-app-backend.herokuapp.com", "https://energy-management-software.herokuapp.com", "http://localhost:3000", "http://localhost:5000","https://nervous-goldwasser-ea1a45.netlify.app", "https://goofy-jang-79f2b5.netlify.app"],
     credentials: true
 }))
 app.use(express.json())
